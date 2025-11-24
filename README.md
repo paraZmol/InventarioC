@@ -4,7 +4,7 @@
 ![Filament](https://img.shields.io/badge/Filament-v3/v4-F2C94C?style=for-the-badge&logo=filament)
 ![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![DOM](https://img.shields.io/badge/DOM-Model-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![DOM](https://img.shields.io/badge/DOMPDF-Wrapper-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 
 > **Repositorio:** [https://github.com/paraZmol/InventarioC.git](https://github.com/paraZmol/InventarioC.git)
 
