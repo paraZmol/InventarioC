@@ -1,59 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Gestión de Inventario para Constructora (MVP)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **Repositorio:** [https://github.com/paraZmol/InventarioC.git](https://github.com/paraZmol/InventarioC.git)
 
-## About Laravel
+Este proyecto es un **Producto Mínimo Viable (MVP)** desarrollado como una solución generalizada para la gestión logística de empresas constructoras. El sistema centraliza el control de almacén, permitiendo el seguimiento de materiales (consumibles) y herramientas (activos devolutivos) a través de múltiples obras o centros de costo.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🛠️ Stack Tecnológico
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+El sistema ha sido construido utilizando las últimas tecnologías del ecosistema PHP para garantizar rapidez, seguridad y escalabilidad:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Lenguaje:** PHP 8.2
+* **Framework Backend:** Laravel 12
+* **Panel Administrativo:** FilamentPHP v4
+* **Base de Datos:** MySQL
+* **Reportes:** DomPDF (Generación de PDF)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 📋 Descripción del Sistema
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+El software resuelve la problemática del "control de stock en tiempo real" mediante una arquitectura basada en eventos (Observers). A diferencia de las hojas de cálculo, este sistema:
 
-## Laravel Sponsors
+1.  **Calcula el stock automáticamente:** No permite editar la cantidad a mano. El stock es el resultado matemático de *Entradas - Salidas + Devoluciones*.
+2.  **Gestiona múltiples ubicaciones:** Controla qué obra tiene qué herramienta en cada momento.
+3.  **Alertas visuales:** Un Dashboard inteligente que avisa cuándo un producto ha llegado a su stock mínimo crítico.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Módulos Principales
 
-### Premium Partners
+* **Escritorio (Dashboard):** Panel de control con KPIs en tiempo real (Obras activas, Alertas de stock crítico en rojo y Gráficos de actividad diaria).
+* **Gestión de Obras:** Catálogo de proyectos activos y sus responsables (Ingenieros/Residentes).
+* **Catálogo de Productos:** Base de datos de ítems diferenciada por tipo:
+    * *Materiales:* Se consumen al salir (Ej: Cemento, Ladrillos).
+    * *Herramientas:* Se asignan y deben retornar (Ej: Taladros, Andamios).
+* **Kardex / Movimientos:** El corazón del sistema. Registra Entradas (Compras), Salidas (Despachos a obra) y Devoluciones.
+* **Reportes:** Generación de PDF oficial con el estado actual del inventario para auditorías físicas.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🗄️ Estructura de Base de Datos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+El sistema utiliza una base de datos relacional MySQL con las siguientes tablas clave:
 
-## Code of Conduct
+1.  `users`: Administradores del sistema.
+2.  `obras`: Proyectos de construcción (Centros de costo).
+3.  `productos`: Inventario maestro. Contiene la lógica de stock mínimo y actual.
+4.  `movimiento_inventarios`: Historial transaccional. Cada fila representa un cambio físico en el almacén.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🚀 Guía de Instalación y Despliegue
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Sigue estos pasos para levantar el proyecto en tu entorno local.
 
-## License
+### Prerrequisitos
+* PHP 8.2 o superior.
+* Composer.
+* Servidor MySQL (XAMPP, Laragon, Docker, etc.).
+* Node.js (Opcional, solo para compilar assets si se requiere).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Paso 1: Clonar el Repositorio
+```bash
+git clone [https://github.com/paraZmol/InventarioC.git](https://github.com/paraZmol/InventarioC.git)
+cd InventarioC
+```
+
+### Paso 2: Instalar Dependencias (Backend)
+Este comando descargará Laravel, Filament y todas las librerías necesarias (DomPDF, etc.).
+```bash
+composer install
+```
+
+### Paso 3: Configurar Entorno
+Duplica el archivo de ejemplo y configura tu base de datos.
+```bash
+cp .env.example .env
+```
+Abre el archivo `.env` y configura tus credenciales de base de datos:
+```bash
+DB_CONNECTION=mysql (puede ser sql)
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=inventacioC (o el nombre que quieras)
+DB_USERNAME=root (puede cambiar tu user name, dependiendo de ti o lo dejas predeterminado)
+DB_PASSWORD= (recuerda colocar tu password o dejarlo en blanco si no lo tienes)
+```
+El resto puede observarlo en el `.env` de ejemplo o `.env.example
+`
+### Paso 4: Generar Key de Aplicación
+```bash
+php artisan key:generate
+```
+
+### Paso 5: Migración y Datos de Prueba (Seeders)
+**IMPORTANTE:** Este comando creará las tablas e insertará datos de prueba (Obras, Productos y Movimientos) para demostrar la lógica automática del sistema.
+```bash
+php artisan migrate:fresh --seed
+```
+
+### Paso 6: Ejecutar Servidor
+```bash
+php artisan serve
+```
+El sistema login del sistema estará disponible en: `http://127.0.0.1:8000/admin`
+
+---
+### Credenciales de Acceso (Demo)
+El sistema viene pre-configurado con un usuario administrador estándar para pruebas:
+* **Usuario:** `admin@admin.com`
+* **Contraseña:** `pass`
+
+---
+### Notas Adicionales
+* **Lógica de Negocio:** El cálculo de stock se realiza mediante un Observer en el modelo de Movimientos. Si se registra una entrada, el stock sube; si es una salida, baja.
+* **Impresión:** Puede generar el reporte de stock yendo a la sección Productos y haciendo clic en el botón "Imprimir Reporte".
