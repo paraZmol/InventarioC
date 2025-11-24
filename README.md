@@ -1,5 +1,11 @@
 # Sistema de Gestión de Inventario para Constructora (MVP)
 
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
+![Filament](https://img.shields.io/badge/Filament-v3/v4-F2C94C?style=for-the-badge&logo=filament)
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![DOM](https://img.shields.io/badge/DOM-Model-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+
 > **Repositorio:** [https://github.com/paraZmol/InventarioC.git](https://github.com/paraZmol/InventarioC.git)
 
 Este proyecto es un **Producto Mínimo Viable (MVP)** desarrollado como una solución generalizada para la gestión logística de empresas constructoras. El sistema centraliza el control de almacén, permitiendo el seguimiento de materiales (consumibles) y herramientas (activos devolutivos) a través de múltiples obras o centros de costo.
@@ -59,8 +65,8 @@ Sigue estos pasos para levantar el proyecto en tu entorno local.
 
 ### Paso 1: Clonar el Repositorio
 ```bash
-git clone [https://github.com/paraZmol/InventarioC.git](https://github.com/paraZmol/InventarioC.git)
-cd InventarioC
+git clone https://github.com/paraZmol/InventarioC.git
+cd inventario
 ```
 
 ### Paso 2: Instalar Dependencias (Backend)
