@@ -19,7 +19,7 @@ class ObrasTable
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('responsable')
+                TextColumn::make('responsableObra')
                     ->searchable(),
 
                 IconColumn::make('activo')
